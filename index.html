@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<!-- displays site properly based on user's device -->
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./images/favicon-32x32.png"
+		/>
+
+		<title>Frontend Mentor | Calculator app</title>
+	</head>
+	<body>
+		<header class="calculator-header">
+			<h1 class="calculator-header__title">calc</h1>
+			<section class="calculator-header__theme">
+				<p class="calculator-header__theme-title">theme</p>
+				<div>
+					<label
+						for="calculator-header__theme-switch-1"
+						class="calculator-header__theme-label"
+						>1</label
+					>
+					<label
+						for="calculator-header__theme-switch-2"
+						class="calculator-header__theme-label"
+						>2</label
+					>
+					<label
+						for="calculator-header__theme-switch-3"
+						class="calculator-header__theme-label"
+						>3</label
+					>
+				</div>
+				<div>
+					<input
+						type="radio"
+						name="calculator-header__theme-switch"
+						id="calculator-header__theme-switch-1"
+						class="calculator-header__theme-switch"
+						value="1"
+					/>
+					<input
+						type="radio"
+						name="calculator-header__theme-switch"
+						id="calculator-header__theme-switch-2"
+						class="calculator-header__theme-switch"
+						value="2"
+					/>
+					<input
+						type="radio"
+						name="calculator-header__theme-switch"
+						id="calculator-header__theme-switch-3"
+						class="calculator-header__theme-switch"
+						value="3"
+					/>
+				</div>
+			</section>
+		</header>
+		<main class="calculator-content">
+			<section class="calculator-content__result">
+				<p class="calculator-content__result-display">399,9821</p>
+			</section>
+			<form class="calculator-content__keys">
+				<button
+					class="calculator-content__key"
+					data-key="7"
+				>
+					7
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="8"
+				>
+					8
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="9"
+				>
+					9
+				</button>
+				<button
+					class="calculator-content__key calculator-content__key--action"
+					data-key="DEL"
+				>
+					DEL
+				</button>
+
+				<button
+					class="calculator-content__key"
+					data-key="4"
+				>
+					4
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="5"
+				>
+					5
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="6"
+				>
+					6
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="+"
+				>
+					+
+				</button>
+
+				<button
+					class="calculator-content__key"
+					data-key="1"
+				>
+					1
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="2"
+				>
+					2
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="3"
+				>
+					3
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="-"
+				>
+					-
+				</button>
+
+				<button
+					class="calculator-content__key"
+					data-key="."
+				>
+					.
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="0"
+				>
+					0
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="/"
+				>
+					/
+				</button>
+				<button
+					class="calculator-content__key"
+					data-key="*"
+				>
+					x
+				</button>
+
+				<button
+					type="reset"
+					class="calculator-content__key calculator-content__key--action calculator-content__key--large"
+					data-key="RESET"
+				>
+					RESET
+				</button>
+				<button
+					type="submit"
+					class="calculator-content__key calculator-content__key--submit calculator-content__key--large"
+					data-key="="
+				>
+					=
+				</button>
+			</form>
+		</main>
+
+		<script
+			src="./app.js"
+			type="module"
+			defer
+		></script>
+	</body>
+</html>
