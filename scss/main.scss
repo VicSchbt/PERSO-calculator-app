@@ -1,36 +1,15 @@
+@import 'theme';
+
 @font-face {
 	font-family: 'League Spartan';
-	src: url('../fonts/LeagueSpartan-Bold.ttf') format('ttf');
+	src: url('../fonts/LeagueSpartan-Bold.ttf');
 	font-weight: 700;
 }
 
-// THEME 1
-
-// main background
-$very-dark-desaturated-blue-1: hsl(222, 26%, 31%);
-// toggle background, keypad background
-$very-dark-desaturated-blue-2: hsl(223, 31%, 20%);
-// screen background
-$very-dark-desaturated-blue-3: hsl(224, 36%, 15%);
-
-// key background
-$desaturated-dark-blue-1: hsl(225, 21%, 49%);
-// key shadow
-$desaturated-dark-blue-2: hsl(224, 28%, 35%);
-
-// key background, toggle
-$red: hsl(6, 63%, 50%);
-// key shadow
-$dark-red: hsl(6, 70%, 34%);
-
-// key background
-$light-grayish-orange: hsl(30, 25%, 89%);
-// key shadow
-$grayish-orange: hsl(28, 16%, 65%);
-
-// Text
-$very-dark-grayish-blue: hsl(221, 14%, 31%);
-$white: hsl(0, 0%, 100%);
+body {
+	height: 100dvh;
+	background-color: var(--body-bg-color);
+}
 
 * {
 	font-family: 'League Spartan', sans-serif;
@@ -51,18 +30,131 @@ $white: hsl(0, 0%, 100%);
 		justify-content: space-between;
 		align-items: center;
 		padding: 2rem;
+		&__title {
+			color: var(--h1-text-color);
+			font-size: 3rem;
+		}
+		&__theme {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-areas: '. labels' 'title switch';
+			gap: 0.5rem;
+			&-title {
+				grid-area: title;
+				align-self: center;
+				justify-self: center;
+				color: var(--theme-selector-text-color);
+				text-transform: uppercase;
+				letter-spacing: 0.1rem;
+				font-size: 1rem;
+			}
+			&-labels {
+				grid-area: labels;
+				display: flex;
+				justify-content: space-between;
+				padding: 0 1rem;
+			}
+			&-inputs {
+				grid-area: switch;
+				position: relative;
+				background-color: var(--theme-selector-bg);
+				height: 2.5rem;
+				width: 6.5rem;
+				border-radius: 1.25rem;
+			}
+
+			&-label {
+				color: var(--theme-selector-text-color);
+			}
+			&-switch {
+				display: none;
+			}
+			&-cursor {
+				display: block;
+				position: absolute;
+				height: 1.5rem;
+				width: 1.5rem;
+				background-color: var(--theme-cursor-color);
+				border-radius: 0.75rem;
+				top: 0.5rem;
+				left: 0.5rem;
+				transition: transform 0.25s ease-in;
+
+				&.theme-2 {
+					transform: translateX(2rem);
+				}
+				&.theme-3 {
+					transform: translateX(4rem);
+				}
+			}
+		}
 	}
 	&-content {
 		padding: 0 2rem 2rem;
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
+		&__result {
+			background-color: var(--result-bg-color);
+			padding: 1.5rem;
+			border-radius: 0.5rem;
+			&-display {
+				font-size: 2.5rem;
+				color: var(--result-text-color);
+				text-align: right;
+			}
+		}
 		&__keys {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
-			gap: 0.5rem;
+			gap: 0.75rem;
+			background-color: var(--keys-bg-color);
+			padding: 1.5rem;
+			border-radius: 0.5rem;
 		}
 		&__key {
+			font-size: 2rem;
+			padding: 1rem;
+			color: var(--key-text-color);
+			background-color: var(--key-bg-color);
+			border: none;
+			border-radius: 0.5rem;
+			box-shadow: 0 4px 0px 0px var(--key-shadow-color);
+			cursor: pointer;
+			&:hover {
+				background-color: var(--key-hover-color);
+			}
+			&:active {
+				background-color: var(--key-active-color);
+				transform: translateY(3px);
+				box-shadow: none;
+			}
+			&--action,
+			&--submit {
+				font-size: 1.25rem;
+			}
+			&--action {
+				color: var(--action-text-color);
+				background-color: var(--action-bg-color);
+				box-shadow: 0 4px 0px 0px var(--action-shadow-color);
+				&:hover {
+					background-color: var(--action-hover-color);
+				}
+				&:active {
+					background-color: var(--action-active-color);
+				}
+			}
+			&--submit {
+				color: var(--submit-text-color);
+				background-color: var(--submit-bg-color);
+				box-shadow: 0 4px 0px 0px var(--submit-shadow-color);
+				&:hover {
+					background-color: var(--submit-hover-color);
+				}
+				&:active {
+					background-color: var(--submit-active-color);
+				}
+			}
 			&--large {
 				grid-column: span 2;
 			}
