@@ -38,11 +38,56 @@ themeInputs.forEach((input) =>
 	)
 );
 
-const keys = document.querySelectorAll('.calculator-content__key');
+const keys = document.querySelector('.calculator-content__keys');
+const result = document.querySelector('.calculator-content__result-display');
 
-keys.forEach((key) =>
-	key.addEventListener('click', (event) => {
-		event.preventDefault();
-		console.log(key.dataset.key);
-	})
-);
+let previousKeyType;
+let firstValue;
+let operator;
+
+keys.addEventListener('click', (event) => {
+	event.preventDefault();
+	if (event.target.matches('button')) {
+		const key = event.target;
+		const action = key.dataset.action;
+		const keyContent = key.textContent;
+		const displayedNum = result.textContent;
+
+		Array.from(key.parentNode.children).forEach((k) => {
+			k.classList.remove('selected');
+			previousKeyType = 'operator';
+		});
+		if (!action) {
+			if (displayedNum === '0' || previousKeyType === 'operator') {
+				result.textContent = keyContent;
+				previousKeyType = null;
+			} else {
+				result.textContent = displayedNum + keyContent;
+			}
+		}
+		if (
+			action === 'add' ||
+			action === 'substract' ||
+			action === 'multiply' ||
+			action === 'divide'
+		) {
+			key.classList.add('selected');
+			firstValue = displayedNum;
+			operator = action;
+		}
+		if (action === 'decimal') {
+			result.textContent = displayedNum + '.';
+		}
+		if (action === 'delete') {
+			console.log('delete key!');
+		}
+		if (action === 'clear') {
+			console.log('clear key!');
+		}
+		if (action === 'calculate') {
+			const secondValue = displayedNum;
+
+			result.textContent = calculate(firstValue, operator, secondValue);
+		}
+	}
+});

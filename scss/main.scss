@@ -106,6 +106,7 @@ body {
 			background-color: var(--result-bg-color);
 			padding: 1.5rem;
 			border-radius: 0.5rem;
+			min-height: 5.3rem;
 			&-display {
 				font-size: 2.5rem;
 				color: var(--result-text-color);
@@ -165,6 +166,10 @@ body {
 			}
 			&--large {
 				grid-column: span 2;
+			}
+			&.selected {
+				box-shadow: inset 0px 0px 0px 4px var(--key-text-color),
+					0 4px 0px 0px var(--key-shadow-color);
 			}
 		}
 	}
