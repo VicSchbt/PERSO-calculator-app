@@ -38,6 +38,19 @@ themeInputs.forEach((input) =>
 	)
 );
 
+const calculate = (n1, operator, n2) => {
+	switch (operator) {
+		case 'add':
+			return n1 + n2;
+		case 'substract':
+			return n1 - n2;
+		case 'multiply':
+			return n1 * n2;
+		case 'divide':
+			return n1 / n2;
+	}
+};
+
 const keys = document.querySelector('.calculator-content__keys');
 const result = document.querySelector('.calculator-content__result-display');
 
@@ -87,7 +100,11 @@ keys.addEventListener('click', (event) => {
 		if (action === 'calculate') {
 			const secondValue = displayedNum;
 
-			result.textContent = calculate(firstValue, operator, secondValue);
+			result.textContent = calculate(
+				parseFloat(firstValue),
+				operator,
+				parseFloat(secondValue)
+			);
 		}
 	}
 });
