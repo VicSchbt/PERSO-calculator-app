@@ -204,6 +204,7 @@ Some ideas:
 - Make the theme switcher accessible;
 - Unit testing;
 - A panel to view the history of calculation.
+- Add a graph in README to understand the age states and how the app behave according to them
 
 ### Useful resources
 
