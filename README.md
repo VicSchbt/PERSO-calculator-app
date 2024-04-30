@@ -1,94 +1,217 @@
-# Frontend Mentor - Calculator app
+# Frontend Mentor - Calculator app solution
 
-![Design preview for the Calculator app coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this calculator app and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - See the size of the elements adjust based on their device's screen size
-- Perform mathematical operations like addition, subtraction, multiplication, and division
+- Perform mathmatical operations like addition, subtraction, multiplication, and division
 - Adjust the color theme based on their preference
 - **Bonus**: Have their initial theme preference checked using `prefers-color-scheme` and have any additional changes saved in the browser
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![](./screenshots/screenshot-theme-1.png)
+![](./screenshots/screenshot-theme-2.png)
+![](./screenshots/screenshot-theme-3.png)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### Links
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+<!-- - Solution URL: [Add solution URL here](https://your-solution-url.com) -->
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+- Live Site URL: [Calculator](https://vicschbt.github.io/PERSO-calculator-app/)
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+## My process
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+### Built with
 
-## Building your project
+- Semantic HTML5 markup
+- CSS custom properties
+- SCSS
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- Vanilla JS
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+### What I learned
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+On the UI side, the theme switcher was a challenge, but after looking at my past projects and a bit of reflexion I manage to create this component.
 
-## Deploying your project
+```html
+<section class="calculator-header__theme">
+	<p class="calculator-header__theme-title">theme</p>
+	<div class="calculator-header__theme-labels">
+		<label
+			for="calculator-header__theme-switch-1"
+			class="calculator-header__theme-label"
+			>1</label
+		>
+		<label
+			for="calculator-header__theme-switch-2"
+			class="calculator-header__theme-label"
+			>2</label
+		>
+		<label
+			for="calculator-header__theme-switch-3"
+			class="calculator-header__theme-label"
+			>3</label
+		>
+	</div>
+	<div class="calculator-header__theme-inputs">
+		<span class="calculator-header__theme-cursor"></span>
+		<input
+			type="radio"
+			name="calculator-header__theme-switch"
+			id="calculator-header__theme-switch-1"
+			class="calculator-header__theme-switch"
+			value="1"
+		/>
+		<input
+			type="radio"
+			name="calculator-header__theme-switch"
+			id="calculator-header__theme-switch-2"
+			class="calculator-header__theme-switch"
+			value="2"
+		/>
+		<input
+			type="radio"
+			name="calculator-header__theme-switch"
+			id="calculator-header__theme-switch-3"
+			class="calculator-header__theme-switch"
+			value="3"
+		/>
+	</div>
+</section>
+```
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+```scss
+&__theme {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-areas: '. labels' 'title switch';
+	gap: 0.5rem;
+	&-title {
+		grid-area: title;
+		align-self: center;
+		justify-self: center;
+		color: var(--theme-selector-text-color);
+		text-transform: uppercase;
+		letter-spacing: 0.1rem;
+		font-size: 1rem;
+	}
+	&-labels {
+		grid-area: labels;
+		display: flex;
+		justify-content: space-between;
+		padding: 0 1rem;
+	}
+	&-inputs {
+		grid-area: switch;
+		position: relative;
+		background-color: var(--theme-selector-bg);
+		height: 2.5rem;
+		width: 6.5rem;
+		border-radius: 1.25rem;
+	}
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+	&-label {
+		color: var(--theme-selector-text-color);
+	}
+	&-switch {
+		display: none;
+	}
+	&-cursor {
+		display: block;
+		position: absolute;
+		height: 1.5rem;
+		width: 1.5rem;
+		background-color: var(--theme-cursor-color);
+		border-radius: 0.75rem;
+		top: 0.5rem;
+		left: 0.5rem;
+		transition: transform 0.25s ease-in;
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+		&.theme-2 {
+			transform: translateX(2rem);
+		}
+		&.theme-3 {
+			transform: translateX(4rem);
+		}
+	}
+}
+```
 
-## Create a custom `README.md`
+```js
+const body = document.querySelector('body');
+const themeSwitch = document.querySelector('.calculator-header__theme-inputs');
+const themeCursor = document.querySelector('.calculator-header__theme-cursor');
+const themeInputs = document.querySelectorAll(
+	'.calculator-header__theme-inputs input'
+);
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+let currentTheme = 1;
+const minX = themeSwitch.getBoundingClientRect().left;
+const maxX = themeSwitch.getBoundingClientRect().right;
+const third = (maxX - minX) / 3;
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+const updateCurrentTheme = (theme) => {
+	if (currentTheme != 1) themeCursor.classList.remove(`theme-${currentTheme}`);
+	body.classList.remove(`theme-${currentTheme}`);
+	currentTheme = theme;
+	if (currentTheme != 1) themeCursor.classList.add(`theme-${currentTheme}`);
+	body.classList.add(`theme-${currentTheme}`);
+};
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+themeSwitch.addEventListener('click', (event) => {
+	const x = event.clientX - minX;
+	if (x < third) {
+		updateCurrentTheme(1);
+	} else if (x < 2 * third) {
+		updateCurrentTheme(2);
+	} else {
+		updateCurrentTheme(3);
+	}
+	if (currentTheme != 1) themeCursor.classList.add(`theme-${currentTheme}`);
+});
 
-## Submitting your solution
+themeInputs.forEach((input) =>
+	input.addEventListener('change', (event) =>
+		updateCurrentTheme(event.target.value)
+	)
+);
+```
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+### Continued development
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+Some ideas:
 
-## Sharing your solution
+- Make the theme switcher accessible;
+- Unit testing;
+- A panel to view the history of calculation.
 
-There are multiple places you can share your solution:
+### Useful resources
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+- [How to build an HTML calculator app from scratch using JavaScript](https://www.freecodecamp.org/news/how-to-build-an-html-calculator-app-from-scratch-using-javascript-4454b8714b98/) - This helped me for understanding all the mecanics behind the calculator app. This article is a step-by-step explanation including a section about refactoring and good practices.
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+## Author
 
-The more specific you are with your questions, the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+- Frontend Mentor - [@VicSchbt](https://www.frontendmentor.io/profile/VicSchbt)
+- LinkedIn - [Victoire Schubert](www.linkedin.com/in/victoire-schubert)
+- Instagram - [@vicschbt.codes](https://www.instagram.com/vicschbt.codes?igsh=OHczMzcwMWpjZm1p&utm_source=qr)
